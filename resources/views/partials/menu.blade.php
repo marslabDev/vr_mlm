@@ -154,6 +154,16 @@
                 </a>
             </li>
         @endcan
+        @can('dealer_student_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.dealer-students.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/dealer-students") || request()->is("admin/dealer-students/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.dealerStudent.title') }}
+                </a>
+            </li>
+        @endcan
         <li class="c-sidebar-nav-item">
             <a href="{{ route("admin.systemCalendar") }}" class="c-sidebar-nav-link {{ request()->is("admin/system-calendar") || request()->is("admin/system-calendar/*") ? "c-active" : "" }}">
                 <i class="c-sidebar-nav-icon fa-fw fas fa-calendar">
