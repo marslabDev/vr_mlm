@@ -20,7 +20,7 @@ class MlmPackagesApiController extends Controller
     {
         abort_if(Gate::denies('mlm_package_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new MlmPackageResource(MlmPackage::all());
+        return new MlmPackageResource(MlmPackage::with(['roles'])->get());
     }
 
     public function store(StoreMlmPackageRequest $request)
@@ -36,7 +36,7 @@ class MlmPackagesApiController extends Controller
     {
         abort_if(Gate::denies('mlm_package_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new MlmPackageResource($mlmPackage);
+        return new MlmPackageResource($mlmPackage->load(['roles']));
     }
 
     public function update(UpdateMlmPackageRequest $request, MlmPackage $mlmPackage)

@@ -6,5 +6,5 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     Route::apiResource('mlm-packages', 'MlmPackagesApiController');
 
     // Mlm Level
-    Route::apiResource('mlm-levels', 'MlmLevelApiController');
+    Route::apiResource('mlm-levels', 'MlmLevelApiController', ['except' => ['store', 'show', 'update', 'destroy']]);
 });

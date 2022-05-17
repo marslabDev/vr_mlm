@@ -34,6 +34,7 @@ class MlmPackage extends Model implements HasMedia
         'name',
         'price',
         'description',
+        'roles_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -48,6 +49,11 @@ class MlmPackage extends Model implements HasMedia
     public function currentPlanMlmLevels()
     {
         return $this->hasMany(MlmLevel::class, 'current_plan_id', 'id');
+    }
+
+    public function roles()
+    {
+        return $this->belongsTo(Role::class, 'roles_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

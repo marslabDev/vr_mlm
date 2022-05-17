@@ -189,6 +189,8 @@ return [
             'updated_at_helper'  => ' ',
             'deleted_at'         => 'Deleted at',
             'deleted_at_helper'  => ' ',
+            'roles'              => 'Roles',
+            'roles_helper'       => ' ',
         ],
     ],
     'mlmLevel' => [
@@ -218,5 +220,13 @@ return [
             'deleted_at'            => 'Deleted at',
             'deleted_at_helper'     => ' ',
         ],
+    ],
+    'registration' => [
+        'title'          => 'Registration',
+        'title_singular' => 'Registration',
+    ],
+    'checkIn' => [
+        'title'          => 'Check In',
+        'title_singular' => 'Check In',
     ],
 ];

@@ -35,6 +35,9 @@
                         {{ trans('cruds.mlmPackage.fields.price') }}
                     </th>
                     <th>
+                        {{ trans('cruds.mlmPackage.fields.roles') }}
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -93,6 +96,7 @@
 { data: 'id', name: 'id' },
 { data: 'name', name: 'name' },
 { data: 'price', name: 'price' },
+{ data: 'roles_title', name: 'roles.title' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

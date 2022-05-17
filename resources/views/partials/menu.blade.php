@@ -137,7 +137,7 @@
         @can('mlm_package_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.mlm-packages.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/mlm-packages") || request()->is("admin/mlm-packages/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                    <i class="fa-fw fas fa-boxes c-sidebar-nav-icon">
 
                     </i>
                     {{ trans('cruds.mlmPackage.title') }}
@@ -147,7 +147,7 @@
         @can('mlm_level_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.mlm-levels.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/mlm-levels") || request()->is("admin/mlm-levels/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                    <i class="fa-fw fas fa-stream c-sidebar-nav-icon">
 
                     </i>
                     {{ trans('cruds.mlmLevel.title') }}
