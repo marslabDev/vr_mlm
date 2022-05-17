@@ -47,6 +47,14 @@
                             {!! $mlmPackage->description !!}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.mlmPackage.fields.roles') }}
+                        </th>
+                        <td>
+                            {{ $mlmPackage->roles->title ?? '' }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

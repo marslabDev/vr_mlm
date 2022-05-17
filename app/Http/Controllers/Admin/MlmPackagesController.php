@@ -9,6 +9,7 @@ use App\Http\Requests\MassDestroyMlmPackageRequest;
 use App\Http\Requests\StoreMlmPackageRequest;
 use App\Http\Requests\UpdateMlmPackageRequest;
 use App\Models\MlmPackage;
+use App\Models\Role;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -25,7 +26,7 @@ class MlmPackagesController extends Controller
         abort_if(Gate::denies('mlm_package_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = MlmPackage::query()->select(sprintf('%s.*', (new MlmPackage())->table));
+            $query = MlmPackage::with(['roles'])->select(sprintf('%s.*', (new MlmPackage())->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -55,8 +56,11 @@ class MlmPackagesController extends Controller
             $table->editColumn('price', function ($row) {
                 return $row->price ? $row->price : '';
             });
+            $table->addColumn('roles_title', function ($row) {
+                return $row->roles ? $row->roles->title : '';
+            });
 
-            $table->rawColumns(['actions', 'placeholder']);
+            $table->rawColumns(['actions', 'placeholder', 'roles']);
 
             return $table->make(true);
         }
@@ -68,7 +72,9 @@ class MlmPackagesController extends Controller
     {
         abort_if(Gate::denies('mlm_package_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.mlmPackages.create');
+        $roles = Role::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.mlmPackages.create', compact('roles'));
     }
 
     public function store(StoreMlmPackageRequest $request)
@@ -86,7 +92,11 @@ class MlmPackagesController extends Controller
     {
         abort_if(Gate::denies('mlm_package_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.mlmPackages.edit', compact('mlmPackage'));
+        $roles = Role::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $mlmPackage->load('roles');
+
+        return view('admin.mlmPackages.edit', compact('mlmPackage', 'roles'));
     }
 
     public function update(UpdateMlmPackageRequest $request, MlmPackage $mlmPackage)
@@ -100,7 +110,7 @@ class MlmPackagesController extends Controller
     {
         abort_if(Gate::denies('mlm_package_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $mlmPackage->load('currentPlanMlmLevels');
+        $mlmPackage->load('roles', 'currentPlanMlmLevels');
 
         return view('admin.mlmPackages.show', compact('mlmPackage'));
     }

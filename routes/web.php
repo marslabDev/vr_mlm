@@ -61,10 +61,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('mlm-packages', 'MlmPackagesController');
 
     // Mlm Level
-    Route::delete('mlm-levels/destroy', 'MlmLevelController@massDestroy')->name('mlm-levels.massDestroy');
     Route::post('mlm-levels/parse-csv-import', 'MlmLevelController@parseCsvImport')->name('mlm-levels.parseCsvImport');
     Route::post('mlm-levels/process-csv-import', 'MlmLevelController@processCsvImport')->name('mlm-levels.processCsvImport');
-    Route::resource('mlm-levels', 'MlmLevelController');
+    Route::resource('mlm-levels', 'MlmLevelController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
 
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');

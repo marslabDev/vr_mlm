@@ -216,30 +216,18 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 52,
-                'title' => 'mlm_level_create',
-            ],
-            [
-                'id'    => 53,
-                'title' => 'mlm_level_edit',
-            ],
-            [
-                'id'    => 54,
-                'title' => 'mlm_level_show',
-            ],
-            [
-                'id'    => 55,
-                'title' => 'mlm_level_delete',
-            ],
-            [
-                'id'    => 56,
                 'title' => 'mlm_level_access',
             ],
             [
-                'id'    => 57,
-                'title' => 'hello_access',
+                'id'    => 53,
+                'title' => 'registration_access',
             ],
             [
-                'id'    => 58,
+                'id'    => 54,
+                'title' => 'check_in_access',
+            ],
+            [
+                'id'    => 55,
                 'title' => 'profile_password_edit',
             ],
         ];
