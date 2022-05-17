@@ -219,4 +219,8 @@ return [
             'deleted_at_helper'     => ' ',
         ],
     ],
+    'hello' => [
+        'title'          => 'Hello',
+        'title_singular' => 'Hello',
+    ],
 ];
