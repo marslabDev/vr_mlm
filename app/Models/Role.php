@@ -27,6 +27,11 @@ class Role extends Model
         'deleted_at',
     ];
 
+    public function rolesMlmPackages()
+    {
+        return $this->hasMany(MlmPackage::class, 'roles_id', 'id');
+    }
+
     public function permissions()
     {
         return $this->belongsToMany(Permission::class);
