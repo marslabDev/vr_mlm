@@ -228,6 +228,10 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 55,
+                'title' => 'dealer_student_access',
+            ],
+            [
+                'id'    => 56,
                 'title' => 'profile_password_edit',
             ],
         ];
