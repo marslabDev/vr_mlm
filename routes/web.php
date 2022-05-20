@@ -28,22 +28,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Audit Logs
     Route::resource('audit-logs', 'AuditLogsController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
 
-    // Product Category
-    Route::delete('product-categories/destroy', 'ProductCategoryController@massDestroy')->name('product-categories.massDestroy');
-    Route::post('product-categories/media', 'ProductCategoryController@storeMedia')->name('product-categories.storeMedia');
-    Route::post('product-categories/ckmedia', 'ProductCategoryController@storeCKEditorImages')->name('product-categories.storeCKEditorImages');
-    Route::resource('product-categories', 'ProductCategoryController');
-
-    // Product Tag
-    Route::delete('product-tags/destroy', 'ProductTagController@massDestroy')->name('product-tags.massDestroy');
-    Route::resource('product-tags', 'ProductTagController');
-
-    // Product
-    Route::delete('products/destroy', 'ProductController@massDestroy')->name('products.massDestroy');
-    Route::post('products/media', 'ProductController@storeMedia')->name('products.storeMedia');
-    Route::post('products/ckmedia', 'ProductController@storeCKEditorImages')->name('products.storeCKEditorImages');
-    Route::resource('products', 'ProductController');
-
     // Settings
     Route::delete('settings/destroy', 'SettingsController@massDestroy')->name('settings.massDestroy');
     Route::resource('settings', 'SettingsController');
@@ -51,14 +35,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Students
     Route::delete('students/destroy', 'StudentsController@massDestroy')->name('students.massDestroy');
     Route::resource('students', 'StudentsController');
-
-    // Mlm Packages
-    Route::delete('mlm-packages/destroy', 'MlmPackagesController@massDestroy')->name('mlm-packages.massDestroy');
-    Route::post('mlm-packages/media', 'MlmPackagesController@storeMedia')->name('mlm-packages.storeMedia');
-    Route::post('mlm-packages/ckmedia', 'MlmPackagesController@storeCKEditorImages')->name('mlm-packages.storeCKEditorImages');
-    Route::post('mlm-packages/parse-csv-import', 'MlmPackagesController@parseCsvImport')->name('mlm-packages.parseCsvImport');
-    Route::post('mlm-packages/process-csv-import', 'MlmPackagesController@processCsvImport')->name('mlm-packages.processCsvImport');
-    Route::resource('mlm-packages', 'MlmPackagesController');
 
     // Mlm Level
     Route::post('mlm-levels/parse-csv-import', 'MlmLevelController@parseCsvImport')->name('mlm-levels.parseCsvImport');
@@ -69,6 +45,20 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('dealer-students/parse-csv-import', 'DealerStudentController@parseCsvImport')->name('dealer-students.parseCsvImport');
     Route::post('dealer-students/process-csv-import', 'DealerStudentController@processCsvImport')->name('dealer-students.processCsvImport');
     Route::resource('dealer-students', 'DealerStudentController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
+
+    // Agent Plan
+    Route::delete('agent-plans/destroy', 'AgentPlanController@massDestroy')->name('agent-plans.massDestroy');
+    Route::post('agent-plans/media', 'AgentPlanController@storeMedia')->name('agent-plans.storeMedia');
+    Route::post('agent-plans/ckmedia', 'AgentPlanController@storeCKEditorImages')->name('agent-plans.storeCKEditorImages');
+    Route::post('agent-plans/parse-csv-import', 'AgentPlanController@parseCsvImport')->name('agent-plans.parseCsvImport');
+    Route::post('agent-plans/process-csv-import', 'AgentPlanController@processCsvImport')->name('agent-plans.processCsvImport');
+    Route::resource('agent-plans', 'AgentPlanController');
+
+    // Commission
+    Route::delete('commissions/destroy', 'CommissionController@massDestroy')->name('commissions.massDestroy');
+    Route::post('commissions/parse-csv-import', 'CommissionController@parseCsvImport')->name('commissions.parseCsvImport');
+    Route::post('commissions/process-csv-import', 'CommissionController@processCsvImport')->name('commissions.processCsvImport');
+    Route::resource('commissions', 'CommissionController');
 
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');

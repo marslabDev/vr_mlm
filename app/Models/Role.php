@@ -27,9 +27,9 @@ class Role extends Model
         'deleted_at',
     ];
 
-    public function rolesMlmPackages()
+    public function rolesAgentPlans()
     {
-        return $this->hasMany(MlmPackage::class, 'roles_id', 'id');
+        return $this->hasMany(AgentPlan::class, 'roles_id', 'id');
     }
 
     public function permissions()

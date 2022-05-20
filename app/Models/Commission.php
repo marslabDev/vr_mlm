@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class MlmLevel extends Model
+class Commission extends Model
 {
     use SoftDeletes;
     use Auditable;
     use HasFactory;
 
-    public $table = 'mlm_levels';
+    public $table = 'commissions';
 
     protected $dates = [
         'created_at',
@@ -23,31 +23,17 @@ class MlmLevel extends Model
     ];
 
     protected $fillable = [
-        'user_id',
-        'current_plan_id',
-        'up_line_id',
-        'position',
-        'path',
-        'level',
-        'children_count',
+        'tuition_package_efk',
+        'agent_plan_id',
+        'commission',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
-    public function user()
+    public function agent_plan()
     {
-        return $this->belongsTo(User::class, 'user_id');
-    }
-
-    public function current_plan()
-    {
-        return $this->belongsTo(AgentPlan::class, 'current_plan_id');
-    }
-
-    public function up_line()
-    {
-        return $this->belongsTo(MlmLevel::class, 'up_line_id');
+        return $this->belongsTo(AgentPlan::class, 'agent_plan_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

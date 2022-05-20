@@ -12,9 +12,9 @@ class AddRelationshipFieldsToMlmLevelsTable extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id', 'user_fk_6615574')->references('id')->on('users');
             $table->unsignedBigInteger('current_plan_id')->nullable();
-            $table->foreign('current_plan_id', 'current_plan_fk_6615575')->references('id')->on('mlm_packages');
+            $table->foreign('current_plan_id', 'current_plan_fk_6615575')->references('id')->on('agent_plans');
             $table->unsignedBigInteger('up_line_id')->nullable();
-            $table->foreign('up_line_id', 'up_line_fk_6615576')->references('id')->on('products');
+            $table->foreign('up_line_id', 'up_line_fk_6615576')->references('id')->on('mlm_levels');
         });
     }
 }
