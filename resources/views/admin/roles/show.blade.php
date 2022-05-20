@@ -58,14 +58,14 @@
     </div>
     <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="#roles_mlm_packages" role="tab" data-toggle="tab">
-                {{ trans('cruds.mlmPackage.title') }}
+            <a class="nav-link" href="#roles_agent_plans" role="tab" data-toggle="tab">
+                {{ trans('cruds.agentPlan.title') }}
             </a>
         </li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane" role="tabpanel" id="roles_mlm_packages">
-            @includeIf('admin.roles.relationships.rolesMlmPackages', ['mlmPackages' => $role->rolesMlmPackages])
+        <div class="tab-pane" role="tabpanel" id="roles_agent_plans">
+            @includeIf('admin.roles.relationships.rolesAgentPlans', ['agentPlans' => $role->rolesAgentPlans])
         </div>
     </div>
 </div>

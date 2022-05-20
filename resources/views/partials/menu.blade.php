@@ -72,46 +72,34 @@
                 </ul>
             </li>
         @endcan
-        @can('product_management_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/product-categories*") ? "c-show" : "" }} {{ request()->is("admin/product-tags*") ? "c-show" : "" }} {{ request()->is("admin/products*") ? "c-show" : "" }}">
-                <a class="c-sidebar-nav-dropdown-toggle" href="#">
-                    <i class="fa-fw fas fa-shopping-cart c-sidebar-nav-icon">
+        @can('agent_plan_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.agent-plans.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/agent-plans") || request()->is("admin/agent-plans/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-boxes c-sidebar-nav-icon">
 
                     </i>
-                    {{ trans('cruds.productManagement.title') }}
+                    {{ trans('cruds.agentPlan.title') }}
                 </a>
-                <ul class="c-sidebar-nav-dropdown-items">
-                    @can('product_category_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.product-categories.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/product-categories") || request()->is("admin/product-categories/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-folder c-sidebar-nav-icon">
+            </li>
+        @endcan
+        @can('mlm_level_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.mlm-levels.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/mlm-levels") || request()->is("admin/mlm-levels/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-stream c-sidebar-nav-icon">
 
-                                </i>
-                                {{ trans('cruds.productCategory.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('product_tag_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.product-tags.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/product-tags") || request()->is("admin/product-tags/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-folder c-sidebar-nav-icon">
+                    </i>
+                    {{ trans('cruds.mlmLevel.title') }}
+                </a>
+            </li>
+        @endcan
+        @can('dealer_student_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.dealer-students.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/dealer-students") || request()->is("admin/dealer-students/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
 
-                                </i>
-                                {{ trans('cruds.productTag.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('product_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.products.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/products") || request()->is("admin/products/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-shopping-cart c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.product.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                </ul>
+                    </i>
+                    {{ trans('cruds.dealerStudent.title') }}
+                </a>
             </li>
         @endcan
         @can('student_access')
@@ -134,33 +122,13 @@
                 </a>
             </li>
         @endcan
-        @can('mlm_package_access')
+        @can('commission_access')
             <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.mlm-packages.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/mlm-packages") || request()->is("admin/mlm-packages/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-boxes c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.mlmPackage.title') }}
-                </a>
-            </li>
-        @endcan
-        @can('mlm_level_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.mlm-levels.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/mlm-levels") || request()->is("admin/mlm-levels/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-stream c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.mlmLevel.title') }}
-                </a>
-            </li>
-        @endcan
-        @can('dealer_student_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.dealer-students.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/dealer-students") || request()->is("admin/dealer-students/*") ? "c-active" : "" }}">
+                <a href="{{ route("admin.commissions.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/commissions") || request()->is("admin/commissions/*") ? "c-active" : "" }}">
                     <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
 
                     </i>
-                    {{ trans('cruds.dealerStudent.title') }}
+                    {{ trans('cruds.commission.title') }}
                 </a>
             </li>
         @endcan

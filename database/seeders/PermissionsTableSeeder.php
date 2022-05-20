@@ -84,154 +84,110 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 19,
-                'title' => 'product_management_access',
-            ],
-            [
-                'id'    => 20,
-                'title' => 'product_category_create',
-            ],
-            [
-                'id'    => 21,
-                'title' => 'product_category_edit',
-            ],
-            [
-                'id'    => 22,
-                'title' => 'product_category_show',
-            ],
-            [
-                'id'    => 23,
-                'title' => 'product_category_delete',
-            ],
-            [
-                'id'    => 24,
-                'title' => 'product_category_access',
-            ],
-            [
-                'id'    => 25,
-                'title' => 'product_tag_create',
-            ],
-            [
-                'id'    => 26,
-                'title' => 'product_tag_edit',
-            ],
-            [
-                'id'    => 27,
-                'title' => 'product_tag_show',
-            ],
-            [
-                'id'    => 28,
-                'title' => 'product_tag_delete',
-            ],
-            [
-                'id'    => 29,
-                'title' => 'product_tag_access',
-            ],
-            [
-                'id'    => 30,
-                'title' => 'product_create',
-            ],
-            [
-                'id'    => 31,
-                'title' => 'product_edit',
-            ],
-            [
-                'id'    => 32,
-                'title' => 'product_show',
-            ],
-            [
-                'id'    => 33,
-                'title' => 'product_delete',
-            ],
-            [
-                'id'    => 34,
-                'title' => 'product_access',
-            ],
-            [
-                'id'    => 35,
                 'title' => 'setting_create',
             ],
             [
-                'id'    => 36,
+                'id'    => 20,
                 'title' => 'setting_edit',
             ],
             [
-                'id'    => 37,
+                'id'    => 21,
                 'title' => 'setting_show',
             ],
             [
-                'id'    => 38,
+                'id'    => 22,
                 'title' => 'setting_delete',
             ],
             [
-                'id'    => 39,
+                'id'    => 23,
                 'title' => 'setting_access',
             ],
             [
-                'id'    => 40,
+                'id'    => 24,
                 'title' => 'dealer_management_access',
             ],
             [
-                'id'    => 41,
+                'id'    => 25,
                 'title' => 'trainer_management_access',
             ],
             [
-                'id'    => 42,
+                'id'    => 26,
                 'title' => 'student_create',
             ],
             [
-                'id'    => 43,
+                'id'    => 27,
                 'title' => 'student_edit',
             ],
             [
-                'id'    => 44,
+                'id'    => 28,
                 'title' => 'student_show',
             ],
             [
-                'id'    => 45,
+                'id'    => 29,
                 'title' => 'student_delete',
             ],
             [
-                'id'    => 46,
+                'id'    => 30,
                 'title' => 'student_access',
             ],
             [
-                'id'    => 47,
-                'title' => 'mlm_package_create',
-            ],
-            [
-                'id'    => 48,
-                'title' => 'mlm_package_edit',
-            ],
-            [
-                'id'    => 49,
-                'title' => 'mlm_package_show',
-            ],
-            [
-                'id'    => 50,
-                'title' => 'mlm_package_delete',
-            ],
-            [
-                'id'    => 51,
-                'title' => 'mlm_package_access',
-            ],
-            [
-                'id'    => 52,
+                'id'    => 31,
                 'title' => 'mlm_level_access',
             ],
             [
-                'id'    => 53,
+                'id'    => 32,
                 'title' => 'registration_access',
             ],
             [
-                'id'    => 54,
+                'id'    => 33,
                 'title' => 'check_in_access',
             ],
             [
-                'id'    => 55,
+                'id'    => 34,
                 'title' => 'dealer_student_access',
             ],
             [
-                'id'    => 56,
+                'id'    => 35,
+                'title' => 'agent_plan_create',
+            ],
+            [
+                'id'    => 36,
+                'title' => 'agent_plan_edit',
+            ],
+            [
+                'id'    => 37,
+                'title' => 'agent_plan_show',
+            ],
+            [
+                'id'    => 38,
+                'title' => 'agent_plan_delete',
+            ],
+            [
+                'id'    => 39,
+                'title' => 'agent_plan_access',
+            ],
+            [
+                'id'    => 40,
+                'title' => 'commission_create',
+            ],
+            [
+                'id'    => 41,
+                'title' => 'commission_edit',
+            ],
+            [
+                'id'    => 42,
+                'title' => 'commission_show',
+            ],
+            [
+                'id'    => 43,
+                'title' => 'commission_delete',
+            ],
+            [
+                'id'    => 44,
+                'title' => 'commission_access',
+            ],
+            [
+                'id'    => 45,
                 'title' => 'profile_password_edit',
             ],
         ];
