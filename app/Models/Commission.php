@@ -26,6 +26,7 @@ class Commission extends Model
         'tuition_package_efk',
         'agent_plan_id',
         'commission',
+        'up_x_line',
         'created_at',
         'updated_at',
         'deleted_at',

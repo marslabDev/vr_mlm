@@ -11,7 +11,8 @@ class CreateCommissionsTable extends Migration
         Schema::create('commissions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('tuition_package_efk');
-            $table->float('commission', 5, 2)->nullable();
+            $table->string('commission');
+            $table->integer('up_x_line');
             $table->timestamps();
             $table->softDeletes();
         });

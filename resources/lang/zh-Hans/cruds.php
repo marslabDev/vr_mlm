@@ -203,6 +203,8 @@ return [
             'deleted_at_helper'          => ' ',
             'commission'                 => 'Commission',
             'commission_helper'          => ' ',
+            'up_x_line'                  => 'Up X Line',
+            'up_x_line_helper'           => ' ',
         ],
     ],
 ];

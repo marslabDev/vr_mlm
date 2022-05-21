@@ -35,14 +35,24 @@
                 <span class="help-block">{{ trans('cruds.commission.fields.agent_plan_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="commission">{{ trans('cruds.commission.fields.commission') }}</label>
-                <input class="form-control {{ $errors->has('commission') ? 'is-invalid' : '' }}" type="number" name="commission" id="commission" value="{{ old('commission', $commission->commission) }}" step="0.01">
+                <label class="required" for="commission">{{ trans('cruds.commission.fields.commission') }}</label>
+                <input class="form-control {{ $errors->has('commission') ? 'is-invalid' : '' }}" type="text" name="commission" id="commission" value="{{ old('commission', $commission->commission) }}" required>
                 @if($errors->has('commission'))
                     <div class="invalid-feedback">
                         {{ $errors->first('commission') }}
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.commission.fields.commission_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="up_x_line">{{ trans('cruds.commission.fields.up_x_line') }}</label>
+                <input class="form-control {{ $errors->has('up_x_line') ? 'is-invalid' : '' }}" type="number" name="up_x_line" id="up_x_line" value="{{ old('up_x_line', $commission->up_x_line) }}" step="1" required>
+                @if($errors->has('up_x_line'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('up_x_line') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.commission.fields.up_x_line_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
