@@ -24,7 +24,14 @@ class UpdateCommissionRequest extends FormRequest
                 'max:2147483647',
             ],
             'commission' => [
-                'numeric',
+                'string',
+                'required',
+            ],
+            'up_x_line' => [
+                'required',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
             ],
         ];
     }
