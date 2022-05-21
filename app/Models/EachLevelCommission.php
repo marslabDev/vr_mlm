@@ -3,18 +3,16 @@
 namespace App\Models;
 
 use \DateTimeInterface;
-use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Commission extends Model
+class EachLevelCommission extends Model
 {
     use SoftDeletes;
-    use Auditable;
     use HasFactory;
 
-    public $table = 'commissions';
+    public $table = 'each_level_commissions';
 
     protected $dates = [
         'created_at',
@@ -23,21 +21,16 @@ class Commission extends Model
     ];
 
     protected $fillable = [
-        'tuition_package_efk',
-        'agent_plan_id',
+        'commission',
+        'level',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
-    public function agent_plan()
+    public function commissionCommissions()
     {
-        return $this->belongsTo(AgentPlan::class, 'agent_plan_id');
-    }
-
-    public function commissions()
-    {
-        return $this->belongsToMany(EachLevelCommission::class);
+        return $this->belongsToMany(Commission::class);
     }
 
     protected function serializeDate(DateTimeInterface $date)

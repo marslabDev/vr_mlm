@@ -4,13 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommissionsTable extends Migration
+class CreateEachLevelCommissionsTable extends Migration
 {
     public function up()
     {
-        Schema::create('commissions', function (Blueprint $table) {
+        Schema::create('each_level_commissions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('tuition_package_efk');
+            $table->string('commission');
+            $table->integer('level');
             $table->timestamps();
             $table->softDeletes();
         });
