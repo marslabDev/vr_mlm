@@ -9,6 +9,7 @@ use App\Http\Requests\StoreCommissionRequest;
 use App\Http\Requests\UpdateCommissionRequest;
 use App\Models\AgentPlan;
 use App\Models\Commission;
+use App\Models\EachLevelCommission;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,7 +24,7 @@ class CommissionController extends Controller
         abort_if(Gate::denies('commission_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Commission::with(['agent_plan'])->select(sprintf('%s.*', (new Commission())->table));
+            $query = Commission::with(['agent_plan', 'commissions'])->select(sprintf('%s.*', (new Commission())->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -55,17 +56,23 @@ class CommissionController extends Controller
             });
 
             $table->editColumn('commission', function ($row) {
-                return $row->commission ? $row->commission : '';
+                $labels = [];
+                foreach ($row->commissions as $commission) {
+                    $labels[] = sprintf('<span class="label label-info label-many">%s</span>', $commission->commission);
+                }
+
+                return implode(' ', $labels);
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'agent_plan']);
+            $table->rawColumns(['actions', 'placeholder', 'agent_plan', 'commission']);
 
             return $table->make(true);
         }
 
-        $agent_plans = AgentPlan::get();
+        $agent_plans            = AgentPlan::get();
+        $each_level_commissions = EachLevelCommission::get();
 
-        return view('admin.commissions.index', compact('agent_plans'));
+        return view('admin.commissions.index', compact('agent_plans', 'each_level_commissions'));
     }
 
     public function create()
@@ -74,12 +81,15 @@ class CommissionController extends Controller
 
         $agent_plans = AgentPlan::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.commissions.create', compact('agent_plans'));
+        $commissions = EachLevelCommission::pluck('commission', 'id');
+
+        return view('admin.commissions.create', compact('agent_plans', 'commissions'));
     }
 
     public function store(StoreCommissionRequest $request)
     {
         $commission = Commission::create($request->all());
+        $commission->commissions()->sync($request->input('commissions', []));
 
         return redirect()->route('admin.commissions.index');
     }
@@ -90,14 +100,17 @@ class CommissionController extends Controller
 
         $agent_plans = AgentPlan::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $commission->load('agent_plan');
+        $commissions = EachLevelCommission::pluck('commission', 'id');
 
-        return view('admin.commissions.edit', compact('agent_plans', 'commission'));
+        $commission->load('agent_plan', 'commissions');
+
+        return view('admin.commissions.edit', compact('agent_plans', 'commission', 'commissions'));
     }
 
     public function update(UpdateCommissionRequest $request, Commission $commission)
     {
         $commission->update($request->all());
+        $commission->commissions()->sync($request->input('commissions', []));
 
         return redirect()->route('admin.commissions.index');
     }
@@ -106,7 +119,7 @@ class CommissionController extends Controller
     {
         abort_if(Gate::denies('commission_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $commission->load('agent_plan');
+        $commission->load('agent_plan', 'commissions');
 
         return view('admin.commissions.show', compact('commission'));
     }

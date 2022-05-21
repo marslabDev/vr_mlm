@@ -23,15 +23,12 @@ class StoreCommissionRequest extends FormRequest
                 'min:-2147483648',
                 'max:2147483647',
             ],
-            'commission' => [
-                'string',
-                'required',
-            ],
-            'up_x_line' => [
-                'required',
+            'commissions.*' => [
                 'integer',
-                'min:-2147483648',
-                'max:2147483647',
+            ],
+            'commissions' => [
+                'required',
+                'array',
             ],
         ];
     }

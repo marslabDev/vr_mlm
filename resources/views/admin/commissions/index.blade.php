@@ -59,7 +59,12 @@
                         </select>
                     </td>
                     <td>
-                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        <select class="search">
+                            <option value>{{ trans('global.all') }}</option>
+                            @foreach($each_level_commissions as $key => $item)
+                                <option value="{{ $item->commission }}">{{ $item->commission }}</option>
+                            @endforeach
+                        </select>
                     </td>
                     <td>
                     </td>
@@ -119,7 +124,7 @@
 { data: 'id', name: 'id' },
 { data: 'tuition_package_efk', name: 'tuition_package_efk' },
 { data: 'agent_plan_name', name: 'agent_plan.name' },
-{ data: 'commission', name: 'commission' },
+{ data: 'commission', name: 'commissions.commission' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

@@ -17,12 +17,13 @@ class CommissionApiController extends Controller
     {
         abort_if(Gate::denies('commission_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new CommissionResource(Commission::with(['agent_plan'])->get());
+        return new CommissionResource(Commission::with(['agent_plan', 'commissions'])->get());
     }
 
     public function store(StoreCommissionRequest $request)
     {
         $commission = Commission::create($request->all());
+        $commission->commissions()->sync($request->input('commissions', []));
 
         return (new CommissionResource($commission))
             ->response()
@@ -33,12 +34,13 @@ class CommissionApiController extends Controller
     {
         abort_if(Gate::denies('commission_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new CommissionResource($commission->load(['agent_plan']));
+        return new CommissionResource($commission->load(['agent_plan', 'commissions']));
     }
 
     public function update(UpdateCommissionRequest $request, Commission $commission)
     {
         $commission->update($request->all());
+        $commission->commissions()->sync($request->input('commissions', []));
 
         return (new CommissionResource($commission))
             ->response()

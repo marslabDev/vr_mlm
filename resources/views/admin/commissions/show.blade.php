@@ -44,7 +44,9 @@
                             {{ trans('cruds.commission.fields.commission') }}
                         </th>
                         <td>
-                            {{ $commission->commission }}
+                            @foreach($commission->commissions as $key => $commission)
+                                <span class="label label-info">{{ $commission->commission }}</span>
+                            @endforeach
                         </td>
                     </tr>
                 </tbody>

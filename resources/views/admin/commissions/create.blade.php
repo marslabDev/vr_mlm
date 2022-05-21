@@ -34,24 +34,22 @@
                 <span class="help-block">{{ trans('cruds.commission.fields.agent_plan_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="commission">{{ trans('cruds.commission.fields.commission') }}</label>
-                <input class="form-control {{ $errors->has('commission') ? 'is-invalid' : '' }}" type="text" name="commission" id="commission" value="{{ old('commission', '') }}" required>
-                @if($errors->has('commission'))
+                <label class="required" for="commissions">{{ trans('cruds.commission.fields.commission') }}</label>
+                <div style="padding-bottom: 4px">
+                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                </div>
+                <select class="form-control select2 {{ $errors->has('commissions') ? 'is-invalid' : '' }}" name="commissions[]" id="commissions" multiple required>
+                    @foreach($commissions as $id => $commission)
+                        <option value="{{ $id }}" {{ in_array($id, old('commissions', [])) ? 'selected' : '' }}>{{ $commission }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('commissions'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('commission') }}
+                        {{ $errors->first('commissions') }}
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.commission.fields.commission_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="up_x_line">{{ trans('cruds.commission.fields.up_x_line') }}</label>
-                <input class="form-control {{ $errors->has('up_x_line') ? 'is-invalid' : '' }}" type="number" name="up_x_line" id="up_x_line" value="{{ old('up_x_line', '0') }}" step="1" required>
-                @if($errors->has('up_x_line'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('up_x_line') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.commission.fields.up_x_line_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

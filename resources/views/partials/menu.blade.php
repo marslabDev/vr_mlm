@@ -132,6 +132,16 @@
                 </a>
             </li>
         @endcan
+        @can('each_level_commission_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.each-level-commissions.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/each-level-commissions") || request()->is("admin/each-level-commissions/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.eachLevelCommission.title') }}
+                </a>
+            </li>
+        @endcan
         <li class="c-sidebar-nav-item">
             <a href="{{ route("admin.systemCalendar") }}" class="c-sidebar-nav-link {{ request()->is("admin/system-calendar") || request()->is("admin/system-calendar/*") ? "c-active" : "" }}">
                 <i class="c-sidebar-nav-icon fa-fw fas fa-calendar">
