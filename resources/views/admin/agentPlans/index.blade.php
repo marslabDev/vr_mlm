@@ -41,6 +41,9 @@
                         {{ trans('cruds.agentPlan.fields.commissionable_level') }}
                     </th>
                     <th>
+                        {{ trans('cruds.agentPlan.fields.refundable') }}
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -101,6 +104,7 @@
 { data: 'price', name: 'price' },
 { data: 'roles_title', name: 'roles.title' },
 { data: 'commissionable_level', name: 'commissionable_level' },
+{ data: 'refundable', name: 'refundable' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
