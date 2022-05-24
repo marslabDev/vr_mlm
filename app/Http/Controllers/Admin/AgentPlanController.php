@@ -63,8 +63,11 @@ class AgentPlanController extends Controller
             $table->editColumn('commissionable_level', function ($row) {
                 return $row->commissionable_level ? $row->commissionable_level : '';
             });
+            $table->editColumn('refundable', function ($row) {
+                return '<input type="checkbox" disabled ' . ($row->refundable ? 'checked' : null) . '>';
+            });
 
-            $table->rawColumns(['actions', 'placeholder', 'roles']);
+            $table->rawColumns(['actions', 'placeholder', 'roles', 'refundable']);
 
             return $table->make(true);
         }

@@ -36,6 +36,7 @@ class AgentPlan extends Model implements HasMedia
         'description',
         'roles_id',
         'commissionable_level',
+        'refundable',
         'created_at',
         'updated_at',
         'deleted_at',

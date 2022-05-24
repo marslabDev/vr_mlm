@@ -14,6 +14,7 @@ class CreateAgentPlansTable extends Migration
             $table->decimal('price', 15, 2);
             $table->longText('description')->nullable();
             $table->integer('commissionable_level');
+            $table->boolean('refundable')->default(0)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

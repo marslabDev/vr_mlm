@@ -63,6 +63,14 @@
                             {{ $agentPlan->commissionable_level }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.agentPlan.fields.refundable') }}
+                        </th>
+                        <td>
+                            <input type="checkbox" disabled="disabled" {{ $agentPlan->refundable ? 'checked' : '' }}>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">
