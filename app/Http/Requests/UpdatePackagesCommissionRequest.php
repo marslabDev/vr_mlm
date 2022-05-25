@@ -2,27 +2,23 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Commission;
+use App\Models\PackagesCommission;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
 
-class UpdateCommissionRequest extends FormRequest
+class UpdatePackagesCommissionRequest extends FormRequest
 {
     public function authorize()
     {
-        return Gate::allows('commission_edit');
+        return Gate::allows('packages_commission_edit');
     }
 
     public function rules()
     {
         return [
-            'commission' => [
-                'string',
-                'required',
-            ],
-            'level' => [
-                'required',
+            'tuition_package_efk' => [
+                'nullable',
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',

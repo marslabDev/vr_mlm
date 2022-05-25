@@ -10,14 +10,39 @@
         <form method="POST" action="{{ route("admin.commissions.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label class="required" for="tuition_package_efk">{{ trans('cruds.commission.fields.tuition_package_efk') }}</label>
-                <input class="form-control {{ $errors->has('tuition_package_efk') ? 'is-invalid' : '' }}" type="number" name="tuition_package_efk" id="tuition_package_efk" value="{{ old('tuition_package_efk', '') }}" step="1" required>
-                @if($errors->has('tuition_package_efk'))
+                <label class="required" for="commission">{{ trans('cruds.commission.fields.commission') }}</label>
+                <input class="form-control {{ $errors->has('commission') ? 'is-invalid' : '' }}" type="text" name="commission" id="commission" value="{{ old('commission', '') }}" required>
+                @if($errors->has('commission'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('tuition_package_efk') }}
+                        {{ $errors->first('commission') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.commission.fields.tuition_package_efk_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.commission.fields.commission_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="level">{{ trans('cruds.commission.fields.level') }}</label>
+                <input class="form-control {{ $errors->has('level') ? 'is-invalid' : '' }}" type="number" name="level" id="level" value="{{ old('level', '0') }}" step="1" required>
+                @if($errors->has('level'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('level') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.commission.fields.level_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label>{{ trans('cruds.commission.fields.type') }}</label>
+                <select class="form-control {{ $errors->has('type') ? 'is-invalid' : '' }}" name="type" id="type">
+                    <option value disabled {{ old('type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    @foreach(App\Models\Commission::TYPE_SELECT as $key => $label)
+                        <option value="{{ $key }}" {{ old('type', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('type'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('type') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.commission.fields.type_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="agent_plan_id">{{ trans('cruds.commission.fields.agent_plan') }}</label>
@@ -32,24 +57,6 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.commission.fields.agent_plan_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="commissions">{{ trans('cruds.commission.fields.commission') }}</label>
-                <div style="padding-bottom: 4px">
-                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
-                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
-                </div>
-                <select class="form-control select2 {{ $errors->has('commissions') ? 'is-invalid' : '' }}" name="commissions[]" id="commissions" multiple required>
-                    @foreach($commissions as $id => $commission)
-                        <option value="{{ $id }}" {{ in_array($id, old('commissions', [])) ? 'selected' : '' }}>{{ $commission }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('commissions'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('commissions') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.commission.fields.commission_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

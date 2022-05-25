@@ -25,10 +25,26 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.commission.fields.tuition_package_efk') }}
+                            {{ trans('cruds.commission.fields.commission') }}
                         </th>
                         <td>
-                            {{ $commission->tuition_package_efk }}
+                            {{ $commission->commission }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.commission.fields.level') }}
+                        </th>
+                        <td>
+                            {{ $commission->level }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.commission.fields.type') }}
+                        </th>
+                        <td>
+                            {{ App\Models\Commission::TYPE_SELECT[$commission->type] ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -37,16 +53,6 @@
                         </th>
                         <td>
                             {{ $commission->agent_plan->name ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.commission.fields.commission') }}
-                        </th>
-                        <td>
-                            @foreach($commission->commissions as $key => $commission)
-                                <span class="label label-info">{{ $commission->commission }}</span>
-                            @endforeach
                         </td>
                     </tr>
                 </tbody>
@@ -60,6 +66,22 @@
     </div>
 </div>
 
-
+<div class="card">
+    <div class="card-header">
+        {{ trans('global.relatedData') }}
+    </div>
+    <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="#commission_packages_commissions" role="tab" data-toggle="tab">
+                {{ trans('cruds.packagesCommission.title') }}
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" role="tabpanel" id="commission_packages_commissions">
+            @includeIf('admin.commissions.relationships.commissionPackagesCommissions', ['packagesCommissions' => $commission->commissionPackagesCommissions])
+        </div>
+    </div>
+</div>
 
 @endsection

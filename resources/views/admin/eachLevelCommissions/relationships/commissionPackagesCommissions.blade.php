@@ -1,8 +1,8 @@
-@can('commission_create')
+@can('packages_commission_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.commissions.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.commission.title_singular') }}
+            <a class="btn btn-success" href="{{ route('admin.packages-commissions.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.packagesCommission.title_singular') }}
             </a>
         </div>
     </div>
@@ -10,34 +10,31 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.commission.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.packagesCommission.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-agentPlanCommissions">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-commissionPackagesCommissions">
                 <thead>
                     <tr>
                         <th width="10">
 
                         </th>
                         <th>
-                            {{ trans('cruds.commission.fields.id') }}
+                            {{ trans('cruds.packagesCommission.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.commission.fields.commission') }}
+                            {{ trans('cruds.packagesCommission.fields.tuition_package_efk') }}
                         </th>
                         <th>
-                            {{ trans('cruds.commission.fields.level') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.commission.fields.type') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.commission.fields.agent_plan') }}
+                            {{ trans('cruds.packagesCommission.fields.agent_plan') }}
                         </th>
                         <th>
                             {{ trans('cruds.agentPlan.fields.price') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.packagesCommission.fields.commission') }}
                         </th>
                         <th>
                             &nbsp;
@@ -45,44 +42,43 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($commissions as $key => $commission)
-                        <tr data-entry-id="{{ $commission->id }}">
+                    @foreach($packagesCommissions as $key => $packagesCommission)
+                        <tr data-entry-id="{{ $packagesCommission->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $commission->id ?? '' }}
+                                {{ $packagesCommission->id ?? '' }}
                             </td>
                             <td>
-                                {{ $commission->commission ?? '' }}
+                                {{ $packagesCommission->tuition_package_efk ?? '' }}
                             </td>
                             <td>
-                                {{ $commission->level ?? '' }}
+                                {{ $packagesCommission->agent_plan->name ?? '' }}
                             </td>
                             <td>
-                                {{ App\Models\Commission::TYPE_SELECT[$commission->type] ?? '' }}
+                                {{ $packagesCommission->agent_plan->price ?? '' }}
                             </td>
                             <td>
-                                {{ $commission->agent_plan->name ?? '' }}
+                                @foreach($packagesCommission->commissions as $key => $item)
+                                    <span class="badge badge-info">{{ $item->commission }}</span>
+                                @endforeach
                             </td>
                             <td>
-                                {{ $commission->agent_plan->price ?? '' }}
-                            </td>
-                            <td>
-                                @can('commission_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.commissions.show', $commission->id) }}">
+                                @can('packages_commission_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.packages-commissions.show', $packagesCommission->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
-                                @can('commission_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.commissions.edit', $commission->id) }}">
+                                @can('packages_commission_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.packages-commissions.edit', $packagesCommission->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
 
-                                @can('commission_delete')
-                                    <form action="{{ route('admin.commissions.destroy', $commission->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                @can('packages_commission_delete')
+                                    <form action="{{ route('admin.packages-commissions.destroy', $packagesCommission->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -104,11 +100,11 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('commission_delete')
+@can('packages_commission_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.commissions.massDestroy') }}",
+    url: "{{ route('admin.packages-commissions.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -139,7 +135,7 @@
     order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
-  let table = $('.datatable-agentPlanCommissions:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  let table = $('.datatable-commissionPackagesCommissions:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();

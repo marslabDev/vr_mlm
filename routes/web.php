@@ -60,8 +60,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('commissions/process-csv-import', 'CommissionController@processCsvImport')->name('commissions.processCsvImport');
     Route::resource('commissions', 'CommissionController');
 
-    // Each Level Commission
-    Route::resource('each-level-commissions', 'EachLevelCommissionController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
+    // Packages Commission
+    Route::post('packages-commissions/parse-csv-import', 'PackagesCommissionController@parseCsvImport')->name('packages-commissions.parseCsvImport');
+    Route::post('packages-commissions/process-csv-import', 'PackagesCommissionController@processCsvImport')->name('packages-commissions.processCsvImport');
+    Route::resource('packages-commissions', 'PackagesCommissionController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
 
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');

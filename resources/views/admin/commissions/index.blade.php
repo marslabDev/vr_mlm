@@ -29,45 +29,23 @@
                         {{ trans('cruds.commission.fields.id') }}
                     </th>
                     <th>
-                        {{ trans('cruds.commission.fields.tuition_package_efk') }}
+                        {{ trans('cruds.commission.fields.commission') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.commission.fields.level') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.commission.fields.type') }}
                     </th>
                     <th>
                         {{ trans('cruds.commission.fields.agent_plan') }}
                     </th>
                     <th>
-                        {{ trans('cruds.commission.fields.commission') }}
+                        {{ trans('cruds.agentPlan.fields.price') }}
                     </th>
                     <th>
                         &nbsp;
                     </th>
-                </tr>
-                <tr>
-                    <td>
-                    </td>
-                    <td>
-                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                    </td>
-                    <td>
-                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                    </td>
-                    <td>
-                        <select class="search">
-                            <option value>{{ trans('global.all') }}</option>
-                            @foreach($agent_plans as $key => $item)
-                                <option value="{{ $item->name }}">{{ $item->name }}</option>
-                            @endforeach
-                        </select>
-                    </td>
-                    <td>
-                        <select class="search">
-                            <option value>{{ trans('global.all') }}</option>
-                            @foreach($each_level_commissions as $key => $item)
-                                <option value="{{ $item->commission }}">{{ $item->commission }}</option>
-                            @endforeach
-                        </select>
-                    </td>
-                    <td>
-                    </td>
                 </tr>
             </thead>
         </table>
@@ -122,9 +100,11 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
-{ data: 'tuition_package_efk', name: 'tuition_package_efk' },
+{ data: 'commission', name: 'commission' },
+{ data: 'level', name: 'level' },
+{ data: 'type', name: 'type' },
 { data: 'agent_plan_name', name: 'agent_plan.name' },
-{ data: 'commission', name: 'commissions.commission' },
+{ data: 'agent_plan.price', name: 'agent_plan.price' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
@@ -137,27 +117,6 @@
           .columns.adjust();
   });
   
-let visibleColumnsIndexes = null;
-$('.datatable thead').on('input', '.search', function () {
-      let strict = $(this).attr('strict') || false
-      let value = strict && this.value ? "^" + this.value + "$" : this.value
-
-      let index = $(this).parent().index()
-      if (visibleColumnsIndexes !== null) {
-        index = visibleColumnsIndexes[index]
-      }
-
-      table
-        .column(index)
-        .search(value, strict)
-        .draw()
-  });
-table.on('column-visibility.dt', function(e, settings, column, state) {
-      visibleColumnsIndexes = []
-      table.columns(":visible").every(function(colIdx) {
-          visibleColumnsIndexes.push(colIdx);
-      });
-  })
 });
 
 </script>
