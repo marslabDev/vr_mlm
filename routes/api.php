@@ -13,4 +13,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Commission
     Route::apiResource('commissions', 'CommissionApiController');
+
+    // Packages Commission
+    Route::apiResource('packages-commissions', 'PackagesCommissionApiController', ['except' => ['store', 'show', 'update', 'destroy']]);
 });

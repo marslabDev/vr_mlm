@@ -17,18 +17,15 @@ class StoreCommissionRequest extends FormRequest
     public function rules()
     {
         return [
-            'tuition_package_efk' => [
+            'commission' => [
+                'string',
+                'required',
+            ],
+            'level' => [
                 'required',
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',
-            ],
-            'commissions.*' => [
-                'integer',
-            ],
-            'commissions' => [
-                'required',
-                'array',
             ],
         ];
     }
