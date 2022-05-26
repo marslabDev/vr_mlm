@@ -92,16 +92,6 @@
                 </a>
             </li>
         @endcan
-        @can('dealer_student_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.dealer-students.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/dealer-students") || request()->is("admin/dealer-students/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.dealerStudent.title') }}
-                </a>
-            </li>
-        @endcan
         @can('student_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.students.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/students") || request()->is("admin/students/*") ? "c-active" : "" }}">
@@ -139,6 +129,16 @@
 
                     </i>
                     {{ trans('cruds.packagesCommission.title') }}
+                </a>
+            </li>
+        @endcan
+        @can('agent_student_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.agent-students.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/agent-students") || request()->is("admin/agent-students/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.agentStudent.title') }}
                 </a>
             </li>
         @endcan

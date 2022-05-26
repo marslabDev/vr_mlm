@@ -144,51 +144,51 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 34,
-                'title' => 'dealer_student_access',
-            ],
-            [
-                'id'    => 35,
                 'title' => 'agent_plan_create',
             ],
             [
-                'id'    => 36,
+                'id'    => 35,
                 'title' => 'agent_plan_edit',
             ],
             [
-                'id'    => 37,
+                'id'    => 36,
                 'title' => 'agent_plan_show',
             ],
             [
-                'id'    => 38,
+                'id'    => 37,
                 'title' => 'agent_plan_delete',
             ],
             [
-                'id'    => 39,
+                'id'    => 38,
                 'title' => 'agent_plan_access',
             ],
             [
-                'id'    => 40,
+                'id'    => 39,
                 'title' => 'commission_create',
             ],
             [
-                'id'    => 41,
+                'id'    => 40,
                 'title' => 'commission_edit',
             ],
             [
-                'id'    => 42,
+                'id'    => 41,
                 'title' => 'commission_show',
             ],
             [
-                'id'    => 43,
+                'id'    => 42,
                 'title' => 'commission_delete',
             ],
             [
-                'id'    => 44,
+                'id'    => 43,
                 'title' => 'commission_access',
             ],
             [
-                'id'    => 45,
+                'id'    => 44,
                 'title' => 'packages_commission_access',
+            ],
+            [
+                'id'    => 45,
+                'title' => 'agent_student_access',
             ],
             [
                 'id'    => 46,

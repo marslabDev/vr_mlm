@@ -41,11 +41,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('mlm-levels/process-csv-import', 'MlmLevelController@processCsvImport')->name('mlm-levels.processCsvImport');
     Route::resource('mlm-levels', 'MlmLevelController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
 
-    // Dealer Student
-    Route::post('dealer-students/parse-csv-import', 'DealerStudentController@parseCsvImport')->name('dealer-students.parseCsvImport');
-    Route::post('dealer-students/process-csv-import', 'DealerStudentController@processCsvImport')->name('dealer-students.processCsvImport');
-    Route::resource('dealer-students', 'DealerStudentController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
-
     // Agent Plan
     Route::delete('agent-plans/destroy', 'AgentPlanController@massDestroy')->name('agent-plans.massDestroy');
     Route::post('agent-plans/media', 'AgentPlanController@storeMedia')->name('agent-plans.storeMedia');
@@ -64,6 +59,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('packages-commissions/parse-csv-import', 'PackagesCommissionController@parseCsvImport')->name('packages-commissions.parseCsvImport');
     Route::post('packages-commissions/process-csv-import', 'PackagesCommissionController@processCsvImport')->name('packages-commissions.processCsvImport');
     Route::resource('packages-commissions', 'PackagesCommissionController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
+
+    // Agent Student
+    Route::post('agent-students/parse-csv-import', 'AgentStudentController@parseCsvImport')->name('agent-students.parseCsvImport');
+    Route::post('agent-students/process-csv-import', 'AgentStudentController@processCsvImport')->name('agent-students.processCsvImport');
+    Route::resource('agent-students', 'AgentStudentController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
 
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
