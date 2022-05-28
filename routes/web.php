@@ -65,6 +65,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('agent-students/process-csv-import', 'AgentStudentController@processCsvImport')->name('agent-students.processCsvImport');
     Route::resource('agent-students', 'AgentStudentController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
 
+    // Commission Statement
+    Route::post('commission-statements/parse-csv-import', 'CommissionStatementController@parseCsvImport')->name('commission-statements.parseCsvImport');
+    Route::post('commission-statements/process-csv-import', 'CommissionStatementController@processCsvImport')->name('commission-statements.processCsvImport');
+    Route::resource('commission-statements', 'CommissionStatementController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
+
+    // Commission Type Statement
+    Route::post('commission-type-statements/parse-csv-import', 'CommissionTypeStatementController@parseCsvImport')->name('commission-type-statements.parseCsvImport');
+    Route::post('commission-type-statements/process-csv-import', 'CommissionTypeStatementController@processCsvImport')->name('commission-type-statements.processCsvImport');
+    Route::resource('commission-type-statements', 'CommissionTypeStatementController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
+
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
 });

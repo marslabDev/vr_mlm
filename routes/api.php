@@ -16,4 +16,10 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Agent Student
     Route::apiResource('agent-students', 'AgentStudentApiController', ['except' => ['store', 'show', 'update', 'destroy']]);
+
+    // Commission Statement
+    Route::apiResource('commission-statements', 'CommissionStatementApiController', ['except' => ['store', 'show', 'update', 'destroy']]);
+
+    // Commission Type Statement
+    Route::apiResource('commission-type-statements', 'CommissionTypeStatementApiController', ['except' => ['store', 'show', 'update', 'destroy']]);
 });
