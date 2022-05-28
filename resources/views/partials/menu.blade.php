@@ -142,6 +142,26 @@
                 </a>
             </li>
         @endcan
+        @can('commission_statement_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.commission-statements.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/commission-statements") || request()->is("admin/commission-statements/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.commissionStatement.title') }}
+                </a>
+            </li>
+        @endcan
+        @can('commission_type_statement_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.commission-type-statements.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/commission-type-statements") || request()->is("admin/commission-type-statements/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.commissionTypeStatement.title') }}
+                </a>
+            </li>
+        @endcan
         <li class="c-sidebar-nav-item">
             <a href="{{ route("admin.systemCalendar") }}" class="c-sidebar-nav-link {{ request()->is("admin/system-calendar") || request()->is("admin/system-calendar/*") ? "c-active" : "" }}">
                 <i class="c-sidebar-nav-icon fa-fw fas fa-calendar">

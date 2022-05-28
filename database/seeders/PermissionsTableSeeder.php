@@ -192,6 +192,14 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 46,
+                'title' => 'commission_statement_access',
+            ],
+            [
+                'id'    => 47,
+                'title' => 'commission_type_statement_access',
+            ],
+            [
+                'id'    => 48,
                 'title' => 'profile_password_edit',
             ],
         ];
